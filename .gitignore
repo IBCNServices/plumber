@@ -80,3 +80,5 @@ fabric.properties
 .DS_STORE/
 .DS_Store/
 
+# Jupyter notebook checkpoints
+.ipynb_checkpoints
