@@ -1,0 +1,11 @@
+apiVersion: plumber.ugent.be/v1alpha1
+kind: Topology
+metadata:
+  name: use-case-topology
+spec:
+  parts:
+  - name: use-case-engineer
+    revision: 1
+  - name: use-case-scientist
+    revision: 1
+  defaultScale: 5

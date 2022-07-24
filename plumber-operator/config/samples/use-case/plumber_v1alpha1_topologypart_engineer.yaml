@@ -1,0 +1,21 @@
+apiVersion: plumber.ugent.be/v1alpha1
+kind: TopologyPart
+metadata:
+  name: use-case-engineer
+spec:
+  sources:
+    iot-ingress:
+      bootstrap: kafka-cluster-iot:9092
+      topic: iot-ingest
+  sinks:
+    actuation-sink:
+      bootstrap: kafka-cluster-iot:9092
+      topic: actuations
+    maintenance-sink:
+      bootstrap: kafka-cluster-maintenance:9092
+      topic: maintenance
+  processors:
+    decoder:
+      inputFrom: iot-ingress
+      image: "decoder-function:v0.0.1"
+      maxScale: 8

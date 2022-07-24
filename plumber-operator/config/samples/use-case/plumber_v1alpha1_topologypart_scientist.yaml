@@ -1,0 +1,20 @@
+apiVersion: plumber.ugent.be/v1alpha1
+kind: TopologyPart
+metadata:
+  name: use-case-scientist
+spec:
+  processors:
+    filter:
+      inputFrom: decoder
+      image: "filter-function:v0.0.1"
+      maxScale: 8
+    actuation-generator:
+      inputFrom: filter
+      image: "actuation-generator-function:v0.0.1"
+      sinkBindings: actuation-sink
+      maxScale: 24
+    maintenance-predictor:
+      inputFrom: decoder
+      image: "predictive-maintenance:v0.0.1"
+      sinkBindings: maintenance-sink
+      maxScale: 12
